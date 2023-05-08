@@ -218,7 +218,7 @@ class AutoGPTPushover(AutoGPTPluginTemplate):
         Returns:
             PromptGenerator: The prompt generator.
         """
-        if self.api:
+        if self.notifier:
             from .pushover import (
                 notify_pushover,
             )
