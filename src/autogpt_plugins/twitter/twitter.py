@@ -21,7 +21,7 @@ def post_tweet(tweet_text: str) -> str:
 
     _tweetID = plugin.client.create_tweet(text=tweet_text)
 
-    return f"Success! Tweet: {_tweetID.text}"
+    return f"Success! Tweet: {tweet_text}"
 
 
 def post_reply(tweet_text: str, tweet_id: int) -> str:
