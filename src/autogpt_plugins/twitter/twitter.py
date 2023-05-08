@@ -19,7 +19,7 @@ def post_tweet(tweet_text: str) -> str:
         str: The tweet that was posted.
     """
 
-    _tweetID = plugin.api.update_status(status=tweet_text)
+    _tweetID = plugin.client.create_tweet(text=tweet_text)
 
     return f"Success! Tweet: {_tweetID.text}"
 

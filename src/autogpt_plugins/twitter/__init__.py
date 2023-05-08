@@ -27,6 +27,7 @@ class AutoGPTTwitter(AutoGPTPluginTemplate):
         self.twitter_consumer_secret = os.getenv("TW_CONSUMER_SECRET")
         self.twitter_access_token = os.getenv("TW_ACCESS_TOKEN")
         self.twitter_access_token_secret = os.getenv("TW_ACCESS_TOKEN_SECRET")
+        self.twitter_bearer = os.getenv("TW_ACCESS_BEARER")
         self.tweet_id = []
         self.tweets = []
 
@@ -39,6 +40,7 @@ class AutoGPTTwitter(AutoGPTPluginTemplate):
             and self.twitter_access_token_secret
         ) is not None:
             # Authenticating to twitter
+            c = tweepy.Client(self.twitter_bearer)
             self.auth = tweepy.OAuth1UserHandler(
                 self.twitter_consumer_key,
                 self.twitter_consumer_secret,
@@ -52,6 +54,7 @@ class AutoGPTTwitter(AutoGPTPluginTemplate):
                 self.twitter_access_token,
                 self.twitter_access_token_secret,
             )
+            self.client = c
         else:
             print("Twitter credentials not found in .env file.")
 
