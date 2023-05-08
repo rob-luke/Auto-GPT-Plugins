@@ -216,11 +216,11 @@ class AutoGPTSlack(AutoGPTPluginTemplate):
         """
         if self.client:
             from .slack import (
-                notify_pushover,
+                slack_message,
             )
 
             prompt.add_command(
-                "notify_pushover", "Notify via Pushover", {"message": "<message>"}, notify_pushover
+                "slack_message", "Send a slack message", {"message": "<message>"}, slack_message
             )
 
         return prompt
