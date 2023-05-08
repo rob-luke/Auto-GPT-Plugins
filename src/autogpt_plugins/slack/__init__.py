@@ -2,7 +2,7 @@
 import os
 from typing import Any, Dict, List, Optional, Tuple, TypedDict, TypeVar
 
-
+from slack_sdk import WebClient
 from auto_gpt_plugin_template import AutoGPTPluginTemplate
 
 PromptGenerator = TypeVar("PromptGenerator")
@@ -15,29 +15,25 @@ class Message(TypedDict):
 
 class AutoGPTSlack(AutoGPTPluginTemplate):
     """
-    Twitter API integrations using Tweepy
+    Slack API integrations
     """
 
     def __init__(self):
         super().__init__()
-        self._name = "autogpt-pushover"
+        self._name = "autogpt-slack"
         self._version = "0.1.0"
-        self._description = "Notify via pushover."
-        self.pushover_token = os.getenv("PO_TOKEN")
-        self.pushover_user_key = os.getenv("PO_USER_KEY")
+        self._description = "Notify via slack."
+        self.slack_token = os.getenv("SLACK_BOT_TOKEN")
 
         self.api = None
 
         if (
-            self.pushover_token
-            and self.pushover_user_key
+            self.slack_token
         ) is not None:
-            PushoverNotifier.APP_TOKEN = self.pushover_token
-            PushoverNotifier.USER_KEY = self.pushover_user_key
-            self.notifier = PushoverNotifier()
-            print("Notifier set up successfully.")
+            self.client = WebClient(token=self.slack_token)
+            print("Slack set up successfully.")
         else:
-            print("Pushover credentials not found in .env file.")
+            print("Slack credentials not found in .env file.")
 
     def can_handle_on_response(self) -> bool:
         """This method is called to check that the plugin can
@@ -218,8 +214,8 @@ class AutoGPTSlack(AutoGPTPluginTemplate):
         Returns:
             PromptGenerator: The prompt generator.
         """
-        if self.api:
-            from .pushover import (
+        if self.client:
+            from .slack import (
                 notify_pushover,
             )
 

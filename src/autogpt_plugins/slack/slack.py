@@ -1,15 +1,13 @@
 """This module contains functions for interacting with the Twitter API."""
 from __future__ import annotations
 
-import pandas as pd
-import tweepy
 
-from . import AutoGPTPushover
+from . import AutoGPTSlack
 
-plugin = AutoGPTPushover()
+plugin = AutoGPTSlack()
 
 
-def notify_pushover(message: str) -> str:
+def slack_message(message: str) -> str:
     """Notify a human with a message.
 
     Args:
@@ -19,7 +17,10 @@ def notify_pushover(message: str) -> str:
         str: The message that was posted.
     """
 
-    _tweetID = plugin.notifier.send_message(text=message)
+    response = plugin.client.chat_postMessage(
+        channel='#bd-agent',
+        text=message)
+    assert response["message"]["text"] == message
 
-    return f"Success! Notified: {message}"
+    return f"Success! Slacked: {message}"
 
