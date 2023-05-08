@@ -1,6 +1,9 @@
 """This module contains functions for interacting with the Twitter API."""
 from __future__ import annotations
 
+import pandas as pd
+import tweepy
+
 from . import AutoGPTPushover
 
 plugin = AutoGPTPushover()
