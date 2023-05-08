@@ -21,7 +21,7 @@ Follow these steps to configure the Auto-GPT Plugins:
     To download it directly from your Auto-GPT directory, you can run this command on Linux or MacOS:
 
     ```bash
-    curl -L -o ./plugins/Auto-GPT-Plugins.zip https://github.com/Significant-Gravitas/Auto-GPT-Plugins/archive/refs/heads/master.zip
+    curl -L -o ./plugins/Auto-GPT-Plugins.zip https://github.com/rob-luke/Auto-GPT-Plugins/archive/refs/heads/master.zip
     ```
 
     In PowerShell:
