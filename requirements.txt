@@ -14,3 +14,4 @@ auto_gpt_plugin_template
 newsapi-python
 pytest
 pytest-cov
+https://github.com/shanto268/pushover_notifier.git
