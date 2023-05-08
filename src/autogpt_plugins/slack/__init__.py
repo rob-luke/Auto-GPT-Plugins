@@ -2,7 +2,7 @@
 import os
 from typing import Any, Dict, List, Optional, Tuple, TypedDict, TypeVar
 
-from pushover_notifier import PushoverNotifier
+
 from auto_gpt_plugin_template import AutoGPTPluginTemplate
 
 PromptGenerator = TypeVar("PromptGenerator")
@@ -13,7 +13,7 @@ class Message(TypedDict):
     content: str
 
 
-class AutoGPTPushover(AutoGPTPluginTemplate):
+class AutoGPTSlack(AutoGPTPluginTemplate):
     """
     Twitter API integrations using Tweepy
     """

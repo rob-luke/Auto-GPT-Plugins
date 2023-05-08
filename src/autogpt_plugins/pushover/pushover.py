@@ -16,7 +16,7 @@ def notify_pushover(message: str) -> str:
         str: The message that was posted.
     """
 
-    _tweetID = plugin.notifier.send_message(text=message)
+    _tweetID = plugin.notifier.send_message(message)
 
     return f"Success! Notified: {message}"
 
