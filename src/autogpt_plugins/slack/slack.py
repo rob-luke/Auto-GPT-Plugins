@@ -19,7 +19,7 @@ def slack_message(message: str) -> str:
 
     response = plugin.client.chat_postMessage(
         channel='#bd-agent',
-        text=f"{message}   (sent on my behalf from my GPT agent :robot_face:)")
+        text=f":robot_face: :speech_balloon: : {message}")
 
     assert response["ok"]
     return f"Success! Slacked: {message}"
