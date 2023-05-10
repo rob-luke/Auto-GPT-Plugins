@@ -26,6 +26,7 @@ class AutoGPTSlack(AutoGPTPluginTemplate):
         self.slack_token = os.getenv("SLACK_BOT_TOKEN")
 
         self.api = None
+        print("INITING")
 
         if (
             self.slack_token
